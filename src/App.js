@@ -1,6 +1,6 @@
-import './App.css';
-import { UserInfo } from './components/UserInfo';
-import { UserList } from './components/UserList';
+import "./App.css";
+import { UserInfo } from "./components/UserInfo";
+import { UserList } from "./components/UserList";
 
 function App() {
   return (
