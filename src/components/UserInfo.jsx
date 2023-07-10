@@ -1,10 +1,8 @@
-import { useSelector } from "react-redux";
-import { UserForm } from "./UserForm";
+import { useSelector } from 'react-redux';
+import { UserForm } from './UserForm';
 
 export function UserInfo() {
-  const isUserActive = useSelector(
-    (state) => state.isUserActiveReducer.isUserActive
-  );
+  const isUserActive = useSelector((state) => state.isUserActiveReducer.isUserActive);
 
   const currentId = useSelector((state) => state.currentUserReducer.index);
 

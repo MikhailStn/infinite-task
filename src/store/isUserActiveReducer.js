@@ -1,11 +1,11 @@
 const defaultState = {
   isUserActive: false,
-  currentUser: "",
+  currentUser: '',
 };
 
 export const isUserActiveReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case "SHOW_USER_INFO":
+    case 'SHOW_USER_INFO':
       return {
         isUserActive: true,
         currentUser: action.payload,

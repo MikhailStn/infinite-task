@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const users = require("../data/generated.json").slice(0);
+export const users = require('../data/generated.json').slice(0);
 
 export function UserForm() {
   const dispatch = useDispatch();
@@ -11,11 +11,11 @@ export function UserForm() {
   const emailRef = useRef();
 
   const [savedDataStyle, setSavedDataStyle] = useState({
-    display: "none",
+    display: 'none',
   });
 
   const [emailDataStyle, setEmailDataStyle] = useState({
-    display: "none",
+    display: 'none',
   });
 
   const currentUser = {
@@ -47,7 +47,7 @@ export function UserForm() {
           value={currentUser.firstName}
           onChange={() => {
             dispatch({
-              type: "CHANGE_CURRENT_USER_FIRST_NAME",
+              type: 'CHANGE_CURRENT_USER_FIRST_NAME',
               payload: firstNameRef.current.value,
             });
           }}
@@ -61,7 +61,7 @@ export function UserForm() {
           value={currentUser.lastName}
           onChange={() => {
             dispatch({
-              type: "CHANGE_CURRENT_USER_LAST_NAME",
+              type: 'CHANGE_CURRENT_USER_LAST_NAME',
               payload: lastNameRef.current.value,
             });
           }}
@@ -76,7 +76,7 @@ export function UserForm() {
           value={currentUser.age}
           onChange={() => {
             dispatch({
-              type: "CHANGE_CURRENT_USER_AGE",
+              type: 'CHANGE_CURRENT_USER_AGE',
               payload: ageRef.current.value,
             });
           }}
@@ -91,7 +91,7 @@ export function UserForm() {
           value={currentUser.email}
           onChange={() => {
             dispatch({
-              type: "CHANGE_CURRENT_USER_EMAIL",
+              type: 'CHANGE_CURRENT_USER_EMAIL',
               payload: emailRef.current.value,
             });
           }}
@@ -102,32 +102,26 @@ export function UserForm() {
         className="user-info__button"
         onClick={(e) => {
           e.preventDefault();
-          if (emailRef.current.value.includes("@")) {
+          if (emailRef.current.value.includes('@')) {
             users[currentUser.index] = currentUser;
-            setSavedDataStyle({ display: "block" });
+            setSavedDataStyle({ display: 'block' });
             setTimeout(() => {
-              setSavedDataStyle({ display: "none" });
+              setSavedDataStyle({ display: 'none' });
             }, 1000);
           } else {
-            setEmailDataStyle({ display: "block" });
+            setEmailDataStyle({ display: 'block' });
             setTimeout(() => {
-              setEmailDataStyle({ display: "none" });
+              setEmailDataStyle({ display: 'none' });
             }, 1000);
           }
         }}
       >
         Сохранить
       </button>
-      <p
-        style={savedDataStyle}
-        className="user-info__saved"
-      >
+      <p style={savedDataStyle} className="user-info__saved">
         Данные сохранены
       </p>
-      <p
-        style={emailDataStyle}
-        className="user-info__email-err"
-      >
+      <p style={emailDataStyle} className="user-info__email-err">
         Почтовый адрес должен содержать символ @
       </p>
     </form>

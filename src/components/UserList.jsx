@@ -1,9 +1,7 @@
-import { FixedSizeList } from "react-window";
-import { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { users } from "./UserForm";
-
-let currEl = "";
+import { FixedSizeList } from 'react-window';
+import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { users } from './UserForm';
 
 const Row = ({ index, style }) => {
   const ref = useRef();
@@ -13,13 +11,13 @@ const Row = ({ index, style }) => {
   return (
     <li
       onClick={() => {
-        dispatch({ type: "SHOW_USER_INFO", payload: ref });
-        dispatch({ type: "REMOVE_CLASS", payload: ref.current });
+        dispatch({ type: 'SHOW_USER_INFO', payload: ref });
+        dispatch({ type: 'REMOVE_CLASS', payload: ref.current });
         if (prevEl) {
-          prevEl.className = "user-list__item";
+          prevEl.className = 'user-list__item';
         }
         dispatch({
-          type: "CHANGE_CURRENT_USER",
+          type: 'CHANGE_CURRENT_USER',
           payload: {
             index: index,
             id: users[index].id,
@@ -29,8 +27,7 @@ const Row = ({ index, style }) => {
             email: users[index].email,
           },
         });
-        ref.current.className = "user-list__item active";
-        currEl = ref.current;
+        ref.current.className = 'user-list__item active';
       }}
       ref={ref}
       key={users[index].id}
@@ -46,12 +43,7 @@ const Row = ({ index, style }) => {
 export function UserList() {
   return (
     <div className="user-list__container">
-      <FixedSizeList
-        height={500}
-        itemCount={1000000}
-        itemSize={30}
-        className="list"
-      >
+      <FixedSizeList height={500} itemCount={1000000} itemSize={30} className="list">
         {Row}
       </FixedSizeList>
     </div>

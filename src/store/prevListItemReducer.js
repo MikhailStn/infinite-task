@@ -1,10 +1,10 @@
 const defaultState = {
-  prevEl: "",
+  prevEl: '',
 };
 
 export const prevListItemReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case "REMOVE_CLASS":
+    case 'REMOVE_CLASS':
       return {
         prevEl: action.payload,
       };
